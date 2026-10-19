@@ -1,0 +1,15 @@
+# Bundle 自激活补丁：安装进 profile 后（App 内「插件」页从路径安装，或手改
+# profile 的 package.json / cordis.patch.yml），此 patch 做两件事：
+#
+#  1. 关掉官方 directory-picker-auto。它在 win32 + 127.0.0.1 下解析为
+#     「Windows 原生选择器」，并占用 ui-workspace 的两个 single
+#     directoryFlow 槽位（single 槽位只允许一个占位者，不关掉本插件注册会
+#     抛 "already has a registration"）。关掉后，选目录这件事完全由本插件接管。
+#  2. 挂上本插件的宿主端入口（/api/dsh-everything-search.* 路由）。
+#
+# 卸载/禁用本插件即回到官方行为（原生选择器），无需其它清理。
+- id: directory-picker
+  disabled: true
+- insert:
+    - id: dsh-everything-search
+      name: dsh-everything-search

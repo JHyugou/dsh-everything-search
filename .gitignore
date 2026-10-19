@@ -1,0 +1,19 @@
+# 依赖与本地产物
+node_modules/
+.pnpm-store/
+*.log
+
+# 第三方二进制：Everything 命令行 es.exe 由使用者自行下载（见 README「依赖准备」），
+# 不随本仓库分发（voidtools 免费软件，遵守其许可）。
+bin/es.exe
+
+# 测试产物：UI 自动化（tools/ui-check.mjs）跑出来的截图，不随仓库发布；
+# README 用的三张演示图由 tools/make-screenshots.mjs 生成，单独提交。
+docs/ui-*.png
+
+# 编辑器 / 系统
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+.ref/

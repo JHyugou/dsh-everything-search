@@ -1,0 +1,59 @@
+{
+  "name": "dsh-everything-search",
+  "version": "0.1.0",
+  "description": "新建工作区对话框：DSH 风格的应用内目录选择器，支持盘符逐级浏览与 Everything 全盘文件夹搜索",
+  "license": "MIT",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./client": "./src/client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src",
+    "bin",
+    "tools",
+    "test",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "keywords": [
+    "deepseek-harness",
+    "dsh-plugin",
+    "workspace",
+    "directory-picker",
+    "everything",
+    "es.exe",
+    "voidtools"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JHyugou/dsh-everything-search.git"
+  },
+  "homepage": "https://github.com/JHyugou/dsh-everything-search#readme",
+  "bugs": {
+    "url": "https://github.com/JHyugou/dsh-everything-search/issues"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-renderer",
+        "@deepseek-ai/dsh-client-ui-workspace",
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-connection"
+      ]
+    }
+  },
+  "scripts": {
+    "check": "node --check src/index.js && node --check src/client.js",
+    "probe": "node tools/probe.mjs",
+    "test": "node --test test/plugin.test.mjs test/render.test.mjs",
+    "compat": "node tools/check-app-compat.mjs",
+    "screenshots": "node tools/make-screenshots.mjs"
+  }
+}
